@@ -2,6 +2,7 @@ package org.stjs.bridge.example.backbonejs;
 
 import static org.stjs.bridge.underscorejs.GlobalUnderscoreJS._;
 import static org.stjs.javascript.JSCollections.$map;
+import static org.stjs.javascript.jquery.GlobalJQuery.$;
 
 import org.stjs.bridge.backbonejs.Backbone.View;
 import org.stjs.bridge.backbonejs.ViewOptions;
@@ -21,11 +22,11 @@ public class TodoView extends View<TodoModel> {
 		tagName = "li";
 		template = _.template($("#item-template").html());
 		// The DOM events specific to an item.
-		events = $map("click .toggle", "toggleDone", //
+		on($map("click .toggle", "toggleDone", //
 				"dblclick .view", "edit",//
 				"click a.destroy", "clear",//
 				"keypress .edit", "updateOnEnter",//
-				"blur .edit", "close");
+				"blur .edit", "close"));
 	}
 
 	public void initialize() {
@@ -37,7 +38,7 @@ public class TodoView extends View<TodoModel> {
 	public TodoView render() {
 		this.$el.html(this.template.$invoke(this.model.toJSON(), null));
 		this.$el.toggleClass("done", (Boolean) this.model.get("done"));
-		this.input = this.$(".edit");
+		this.input = $(".edit");
 		return this;
 	}
 
