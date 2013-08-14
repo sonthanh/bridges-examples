@@ -15,7 +15,7 @@ public class TodoList extends Collection<TodoModel> {
 	}
 
 	public Array<TodoModel> done() {
-		return this.where(new TodoModel() {
+		return this.where(new TodoModel(null, null) {
 			{
 				done = true;
 			}

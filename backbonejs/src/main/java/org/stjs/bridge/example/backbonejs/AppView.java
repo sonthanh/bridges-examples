@@ -3,7 +3,6 @@ package org.stjs.bridge.example.backbonejs;
 import static org.stjs.bridge.underscorejs.GlobalUnderscoreJS._;
 import static org.stjs.javascript.JSCollections.$map;
 import static org.stjs.javascript.JSObjectAdapter.$get;
-import static org.stjs.javascript.jquery.GlobalJQuery.$;
 
 import org.stjs.bridge.backbonejs.Backbone.View;
 import org.stjs.bridge.backbonejs.ViewOptions;
@@ -15,6 +14,7 @@ import org.stjs.javascript.dom.Input;
 import org.stjs.javascript.functions.Callback3;
 import org.stjs.javascript.functions.Function2;
 import org.stjs.javascript.jquery.Event;
+import org.stjs.javascript.jquery.GlobalJQuery;
 import org.stjs.javascript.jquery.JQueryCore;
 
 public class AppView extends View<TodoModel> {
@@ -24,27 +24,37 @@ public class AppView extends View<TodoModel> {
 	private Input allCheckbox;
 	private Function2<Object, TemplateOptions, String> statsTemplate;
 
-	public AppView() {
-		el = $("#todoapp").get(0);
-		statsTemplate = _.template($("#stats-template").html());
-		on($map("keypress #new-todo", "createOnEnter",//
-				"click #clear-completed", "clearCompleted",//
-				"click #toggle-all", "toggleAllComplete"//
-		));
+	@Override
+	protected void _ensureElement() {
+		el = GlobalJQuery.$("#todoapp").get(0);
+		super._ensureElement();
 	}
 
-	public void initialize() {
-		this.input = $("#new-todo");
-		this.allCheckbox = (Input) $("#toggle-all").get(0);
+	@Override
+	protected void delegateEvents() {
+		events = $map("keypress #new-todo", "createOnEnter",//
+				"click #clear-completed", "clearCompleted",//
+				"click #toggle-all", "toggleAllComplete"//
+		);
+		super.delegateEvents();
+	}
+
+	@Override
+	protected void initialize() {
+		this.input = this.$("#new-todo");
+		this.allCheckbox = (Input) this.$("#toggle-all").get(0);
 
 		this.listenTo(Todo.Todos, "add", JSObjectAdapter.$get(this, "addOne"));
 		this.listenTo(Todo.Todos, "reset", JSObjectAdapter.$get(this, "addAll"));
 		this.listenTo(Todo.Todos, "all", JSObjectAdapter.$get(this, "render"));
 
-		this.footer = $("footer");
-		this.main = $("#main");
+		this.footer = this.$("footer");
+		this.main = GlobalJQuery.$("#main");
+
+		statsTemplate = _.template(GlobalJQuery.$("#stats-template").html());
 
 		Todo.Todos.fetch();
+
 	}
 
 	@Override
@@ -71,7 +81,7 @@ public class AppView extends View<TodoModel> {
 				model = todo;
 			}
 		});
-		$("#todo-list").append(view.render().el);
+		this.$("#todo-list").append(view.render().el);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -83,7 +93,7 @@ public class AppView extends View<TodoModel> {
 		if (e.keyCode != 13) {
 			return;
 		}
-		if (this.input.val() != null) {
+		if (this.input.val() == null) {
 			return;
 		}
 
@@ -106,4 +116,5 @@ public class AppView extends View<TodoModel> {
 			}
 		});
 	}
+
 }

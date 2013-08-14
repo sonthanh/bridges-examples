@@ -42,9 +42,9 @@
     <br />Rewritten by: <a href="http://github.com/acraciun">Alexandru Craciun</a>.
   </div>
 
+ 
 <!-- Templates -->
-
-  <script type="text/template" id="item-template">
+   <script type="text/template" id="item-template">
     <div class="view">
       <input class="toggle" type="checkbox" <%= done ? 'checked="checked"' : '' %> />
       <label><%- title %></label>
@@ -59,8 +59,7 @@
     <% } %>
     <div class="todo-count"><b><%= remaining %></b> <%= remaining == 1 ? 'item' : 'items' %> left</div>
   </script>
-
-
+  
   <script src="js/json2.js"></script>
   <script src="js/jquery.js"></script>
   <script src="generated-js/underscore.js"></script>
@@ -73,6 +72,7 @@
   <script src="generated-js/org/stjs/bridge/example/backbonejs/AppView.js"></script>
   <script src="generated-js/org/stjs/bridge/example/backbonejs/Todo.js"></script>
 
+	
   
   </body>
 </html>

@@ -2,7 +2,6 @@ package org.stjs.bridge.example.backbonejs;
 
 import static org.stjs.bridge.underscorejs.GlobalUnderscoreJS._;
 import static org.stjs.javascript.JSCollections.$map;
-import static org.stjs.javascript.jquery.GlobalJQuery.$;
 
 import org.stjs.bridge.backbonejs.Backbone.View;
 import org.stjs.bridge.backbonejs.ViewOptions;
@@ -10,6 +9,7 @@ import org.stjs.bridge.underscorejs.TemplateOptions;
 import org.stjs.javascript.JSObjectAdapter;
 import org.stjs.javascript.functions.Function2;
 import org.stjs.javascript.jquery.Event;
+import org.stjs.javascript.jquery.GlobalJQuery;
 import org.stjs.javascript.jquery.JQueryCore;
 
 public class TodoView extends View<TodoModel> {
@@ -19,19 +19,30 @@ public class TodoView extends View<TodoModel> {
 
 	public TodoView(ViewOptions<TodoModel> options) {
 		super(options);
+	}
+
+	@Override
+	protected void _ensureElement() {
 		tagName = "li";
-		template = _.template($("#item-template").html());
+		super._ensureElement();
+	}
+
+	@Override
+	protected void delegateEvents() {
 		// The DOM events specific to an item.
-		on($map("click .toggle", "toggleDone", //
+		events = $map("click .toggle", "toggleDone", //
 				"dblclick .view", "edit",//
 				"click a.destroy", "clear",//
 				"keypress .edit", "updateOnEnter",//
-				"blur .edit", "close"));
+				"blur .edit", "close");
+		super.delegateEvents();
 	}
 
-	public void initialize() {
+	@Override
+	protected void initialize() {
 		this.listenTo(this.model, "change", JSObjectAdapter.$get(this, "render"));
 		this.listenTo(this.model, "destroy", JSObjectAdapter.$get(this, "remove"));
+		template = _.template(GlobalJQuery.$("#item-template").html());
 	}
 
 	@Override
@@ -52,8 +63,8 @@ public class TodoView extends View<TodoModel> {
 	}
 
 	public void close() {
-		boolean value = (Boolean) this.input.val();
-		if (!value) {
+		String value = (String) this.input.val();
+		if (value == null) {
 			this.clear();
 		} else {
 			this.model.save($map("title", value));
