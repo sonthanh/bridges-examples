@@ -17,6 +17,7 @@
 
 	<modules>
 		<module>backbonejs</module>
+		<module>angularjs</module>
 	</modules>
 
 	<properties>
