@@ -1,6 +1,10 @@
 package org.stjs.bridge.example.angularjs.services;
 
+import static org.stjs.javascript.Global.$or;
+
 import org.stjs.bridge.example.angularjs.App;
+import org.stjs.bridge.example.angularjs.extra.GlobalExtra;
+import org.stjs.bridge.example.angularjs.extra.JSON;
 import org.stjs.javascript.annotation.Template;
 import org.stjs.javascript.functions.Function0;
 
@@ -10,12 +14,12 @@ import org.stjs.javascript.functions.Function0;
 public class TodoStorage {
 	private static final String STORAGE_ID = "todos-angularjs";
 
-	public Object get() {
-		return JSON.parse(localStorage.getItem(STORAGE_ID) || "[]");
+	public <T> T get() {
+		return JSON.parse((String) $or(GlobalExtra.localStorage.getItem(STORAGE_ID), "[]"));
 	}
 
 	public void put(Object todos) {
-		localStorage.setItem(STORAGE_ID, JSON.stringify(todos));
+		GlobalExtra.localStorage.setItem(STORAGE_ID, JSON.stringify(todos));
 	}
 
 	public static void main(String[] args) {
