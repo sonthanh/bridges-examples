@@ -14,7 +14,7 @@
 
 	<properties>
 		<jquery.version>1.6.1.0</jquery.version>
-		<backbonejs.version>1.0.0.0-SNAPSHOT</backbonejs.version>
+		<backbonejs.version>1.0.0.bv0-SNAPSHOT</backbonejs.version>
 	</properties>
 	<dependencies>
 		<dependency>

@@ -15,7 +15,7 @@ public class TodoStorage {
 	private static final String STORAGE_ID = "todos-angularjs";
 
 	public <T> T get() {
-		return JSON.parse((String) $or(GlobalExtra.localStorage.getItem(STORAGE_ID), "[]"));
+		return (T) JSON.parse($or((String) GlobalExtra.localStorage.getItem(STORAGE_ID), "[]"));
 	}
 
 	public void put(Object todos) {
