@@ -4,7 +4,7 @@ import static org.stjs.bridge.underscorejs.GlobalUnderscoreJS._;
 import static org.stjs.javascript.JSCollections.$map;
 
 import org.stjs.bridge.backbonejs.Backbone.View;
-import org.stjs.bridge.backbonejs.ViewOptions;
+import org.stjs.bridge.backbonejs.options.ViewOptions;
 import org.stjs.bridge.underscorejs.TemplateOptions;
 import org.stjs.javascript.JSObjectAdapter;
 import org.stjs.javascript.functions.Function2;

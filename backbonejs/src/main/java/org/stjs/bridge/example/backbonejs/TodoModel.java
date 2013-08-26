@@ -3,7 +3,7 @@ package org.stjs.bridge.example.backbonejs;
 import static org.stjs.javascript.JSCollections.$map;
 
 import org.stjs.bridge.backbonejs.Backbone.Model;
-import org.stjs.bridge.backbonejs.ModelOptions;
+import org.stjs.bridge.backbonejs.options.ModelOptions;
 import org.stjs.javascript.Map;
 
 public class TodoModel extends Model {
