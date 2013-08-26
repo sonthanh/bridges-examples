@@ -25,12 +25,12 @@
 
 
 		<!-- tests -->
-		<dependency>
-			<groupId>org.st-js</groupId>
-			<artifactId>test-helper</artifactId>
-			<version>${stjs.version}</version>
-			<scope>test</scope>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.st-js</groupId> -->
+<!-- 			<artifactId>test-helper</artifactId> -->
+<!-- 			<version>${stjs.version}</version> -->
+<!-- 			<scope>test</scope> -->
+<!-- 		</dependency> -->
 
 		<dependency>
 			<groupId>junit</groupId>

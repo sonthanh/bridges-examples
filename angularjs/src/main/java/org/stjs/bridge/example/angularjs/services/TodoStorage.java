@@ -1,11 +1,10 @@
 package org.stjs.bridge.example.angularjs.services;
 
 import static org.stjs.javascript.Global.$or;
+import static org.stjs.javascript.Global.JSON;
+import static org.stjs.javascript.Global.localStorage;
 
 import org.stjs.bridge.example.angularjs.App;
-import org.stjs.bridge.example.angularjs.extra.GlobalExtra;
-import org.stjs.bridge.example.angularjs.extra.JSON;
-import org.stjs.javascript.annotation.Template;
 import org.stjs.javascript.functions.Function0;
 
 /**
@@ -14,18 +13,18 @@ import org.stjs.javascript.functions.Function0;
 public class TodoStorage {
 	private static final String STORAGE_ID = "todos-angularjs";
 
-	public <T> T get() {
-		return (T) JSON.parse($or((String) GlobalExtra.localStorage.getItem(STORAGE_ID), "[]"));
+	public void put(Object todos) {
+		localStorage.setItem(STORAGE_ID, JSON.stringify(todos));
 	}
 
-	public void put(Object todos) {
-		GlobalExtra.localStorage.setItem(STORAGE_ID, JSON.stringify(todos));
+	@SuppressWarnings("unchecked")
+	public <T> T get() {
+		return (T) JSON.parse($or((String) localStorage.getItem(STORAGE_ID), "[]"));
 	}
 
 	public static void main(String[] args) {
 		App.todomvc.factory("todoStorage", new Function0<Object>() {
 			@Override
-			@Template("invoke")
 			public Object $invoke() {
 				return new TodoStorage();
 			}
