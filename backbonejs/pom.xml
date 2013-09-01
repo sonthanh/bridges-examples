@@ -13,7 +13,6 @@
 	</parent>
 
 	<properties>
-		<jquery.version>1.6.1.0</jquery.version>
 		<backbonejs.version>1.0.0.bv0-SNAPSHOT</backbonejs.version>
 	</properties>
 	<dependencies>
