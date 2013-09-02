@@ -12,7 +12,7 @@ import org.stjs.javascript.jquery.JQueryCore;
 
 public class TodoEscape {
 	public static void main(String[] args) {
-		App.todomvc.directive("todoBlur", new Function0<Object>() {
+		App.todomvc.directive("todoEscape", new Function0<Object>() {
 			@Override
 			public Object $invoke() {
 				return new Callback3<Scope, JQueryCore<JQueryCore<?>>, Attributes>() {
