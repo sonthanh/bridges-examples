@@ -2,9 +2,9 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>angularjs-example</artifactId>
+	<artifactId>jquery-stock-example</artifactId>
 	<packaging>war</packaging>
-	<name>Strongly-typed JavaScript: Angular JS Example</name>
+	<name>Strongly-typed JavaScript: jQuery bridge usage example - Stocks</name>
 
 	<parent>
 		<groupId>org.st-js.bridge</groupId>
@@ -12,24 +12,23 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<properties>
-		<angularjs.version>1.0.7.bv0-SNAPSHOT</angularjs.version>
-	</properties>
+
 	<dependencies>
+		<!-- for the java libraries -->
 		<dependency>
 			<groupId>org.st-js.bridge</groupId>
-			<artifactId>angularjs</artifactId>
-			<version>${angularjs.version}</version>
+			<artifactId>jquery</artifactId>
+			<version>1.9.1.bv0-SNAPSHOT</version>
 		</dependency>
-
+		
 
 		<!-- tests -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.st-js</groupId> -->
-<!-- 			<artifactId>test-helper</artifactId> -->
-<!-- 			<version>${stjs.version}</version> -->
-<!-- 			<scope>test</scope> -->
-<!-- 		</dependency> -->
+		<dependency>
+			<groupId>org.st-js</groupId>
+			<artifactId>test-helper</artifactId>
+			<version>${stjs.version}</version>
+			<scope>test</scope>
+		</dependency>
 
 		<dependency>
 			<groupId>junit</groupId>
@@ -39,5 +38,5 @@
 		</dependency>
 	</dependencies>
 
-
+	
 </project>

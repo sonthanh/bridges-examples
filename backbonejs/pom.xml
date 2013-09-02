@@ -4,7 +4,7 @@
 
 	<artifactId>backbonejs-example</artifactId>
 	<packaging>war</packaging>
-	<name>Strongly-typed Javascript:Backbone JS Example</name>
+	<name>Strongly-typed JavaScript: Backbone JS Example</name>
 
 	<parent>
 		<groupId>org.st-js.bridge</groupId>
