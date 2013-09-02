@@ -8,9 +8,5 @@ import org.stjs.javascript.annotation.GlobalScope;
 
 @GlobalScope
 public class App {
-	public static Module todomvc;
-
-	public static void main(String[] args) {
-		todomvc = angular.module("todomvc", $array());
-	}
+	public static Module todomvc = angular.module("todomvc", $array());
 }
