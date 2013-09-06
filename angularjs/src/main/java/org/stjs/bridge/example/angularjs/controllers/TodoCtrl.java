@@ -3,6 +3,7 @@ package org.stjs.bridge.example.angularjs.controllers;
 import static org.stjs.bridge.angularjs.GlobalAngularJS.angular;
 
 import org.stjs.bridge.angularjs.Location;
+import org.stjs.bridge.angularjs.Watcher;
 import org.stjs.bridge.example.angularjs.App;
 import org.stjs.bridge.example.angularjs.Todo;
 import org.stjs.bridge.example.angularjs.extra.ArrayExtra;
@@ -10,7 +11,6 @@ import org.stjs.bridge.example.angularjs.services.TodoStorage;
 import org.stjs.javascript.Array;
 import org.stjs.javascript.functions.Callback0;
 import org.stjs.javascript.functions.Callback1;
-import org.stjs.javascript.functions.Callback2;
 import org.stjs.javascript.functions.Function2;
 import org.stjs.javascript.functions.Function3;
 
@@ -21,7 +21,7 @@ public class TodoCtrl {
 
 		$scope.newTodo = "";
 		$scope.editedTodo = null;
-		$scope.$watch("todos", new Callback2<String, String>() {
+		$scope.$watch("todos", new Watcher<String>() {
 			@Override
 			public void $invoke(String newValue, String oldValue) {
 				$scope.remainingCount = filterFilter.$invoke($scope.todos, new Todo() {
@@ -43,7 +43,7 @@ public class TodoCtrl {
 
 		$scope.location = $location;
 
-		$scope.$watch("location.path()", new Callback2<String, String>() {
+		$scope.$watch("location.path()", new Watcher<String>() {
 			@Override
 			public void $invoke(String path, String oldValue) {
 				$scope.statusFilter = path == "/active" ? new Todo() {
