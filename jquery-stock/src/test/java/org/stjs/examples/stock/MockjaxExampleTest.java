@@ -2,16 +2,16 @@ package org.stjs.examples.stock;
 
 import static org.junit.Assert.assertEquals;
 import static org.stjs.javascript.JSCollections.$map;
-import static org.stjs.testing.jquery.TestingGlobalJQuery.$;
+import static org.stjs.javascript.jquery.testing.TestingGlobalJQuery.$;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.stjs.javascript.functions.Callback3;
 import org.stjs.javascript.jquery.JQueryXHR;
+import org.stjs.javascript.jquery.testing.MockjaxOptions;
 import org.stjs.testing.annotation.HTMLFixture;
 import org.stjs.testing.annotation.ScriptsAfter;
 import org.stjs.testing.driver.STJSTestDriverRunner;
-import org.stjs.testing.jquery.MockjaxOptions;
 
 @RunWith(STJSTestDriverRunner.class)
 @HTMLFixture(" <div id='fortune'></div>")

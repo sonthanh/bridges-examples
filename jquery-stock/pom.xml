@@ -17,8 +17,8 @@
 		<!-- for the java libraries -->
 		<dependency>
 			<groupId>org.st-js.bridge</groupId>
-			<artifactId>jquery</artifactId>
-			<version>1.9.1.bv0-SNAPSHOT</version>
+			<artifactId>jqueryui</artifactId>
+			<version>1.10.3.bv0-SNAPSHOT</version>
 		</dependency>
 		
 
