@@ -9,6 +9,7 @@ import org.stjs.bridge.backbonejs.options.ViewOptions;
 import org.stjs.bridge.underscorejs.TemplateOptions;
 import org.stjs.javascript.Array;
 import org.stjs.javascript.JSObjectAdapter;
+import org.stjs.javascript.Map;
 import org.stjs.javascript.annotation.Template;
 import org.stjs.javascript.dom.Input;
 import org.stjs.javascript.functions.Callback3;
@@ -31,12 +32,12 @@ public class AppView extends View<TodoModel> {
 	}
 
 	@Override
-	protected void delegateEvents() {
+	public void delegateEvents(Map<String, Object> someEvents) {
 		events = $map("keypress #new-todo", "createOnEnter",//
 				"click #clear-completed", "clearCompleted",//
 				"click #toggle-all", "toggleAllComplete"//
 		);
-		super.delegateEvents();
+		super.delegateEvents(null);
 	}
 
 	@Override

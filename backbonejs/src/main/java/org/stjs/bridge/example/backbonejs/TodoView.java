@@ -7,6 +7,7 @@ import org.stjs.bridge.backbonejs.Backbone.View;
 import org.stjs.bridge.backbonejs.options.ViewOptions;
 import org.stjs.bridge.underscorejs.TemplateOptions;
 import org.stjs.javascript.JSObjectAdapter;
+import org.stjs.javascript.Map;
 import org.stjs.javascript.functions.Function2;
 import org.stjs.javascript.jquery.Event;
 import org.stjs.javascript.jquery.GlobalJQuery;
@@ -28,14 +29,14 @@ public class TodoView extends View<TodoModel> {
 	}
 
 	@Override
-	protected void delegateEvents() {
+	public void delegateEvents(Map<String, Object> someEvents) {
 		// The DOM events specific to an item.
 		events = $map("click .toggle", "toggleDone", //
 				"dblclick .view", "edit",//
 				"click a.destroy", "clear",//
 				"keypress .edit", "updateOnEnter",//
 				"blur .edit", "close");
-		super.delegateEvents();
+		super.delegateEvents(null);
 	}
 
 	@Override
