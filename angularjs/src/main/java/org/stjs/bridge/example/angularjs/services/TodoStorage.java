@@ -1,11 +1,10 @@
 package org.stjs.bridge.example.angularjs.services;
 
-import static org.stjs.javascript.Global.$or;
-import static org.stjs.javascript.Global.JSON;
 import static org.stjs.javascript.Global.localStorage;
+import static org.stjs.javascript.JSGlobal.$or;
+import static org.stjs.javascript.JSGlobal.JSON;
 
 import org.stjs.bridge.example.angularjs.App;
-import org.stjs.javascript.functions.Function0;
 
 /**
  * Services that persists and retrieves TODOs from localStorage
@@ -23,11 +22,6 @@ public class TodoStorage {
 	}
 
 	public static void main(String[] args) {
-		App.todomvc.factory("todoStorage", new Function0<Object>() {
-			@Override
-			public Object $invoke() {
-				return new TodoStorage();
-			}
-		});
+		App.todomvc.factory("todoStorage", () -> new TodoStorage());
 	}
 }
