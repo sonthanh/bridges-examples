@@ -24,7 +24,7 @@
 	</modules>
 
 	<properties>
-		<stjs.version>2.1.0</stjs.version>
+		<stjs.version>3.0.0-SNAPSHOT</stjs.version>
 	</properties>
 
 
@@ -71,7 +71,7 @@
 						</baseResource>
 					</webAppConfig>
 				</configuration>
-			</plugin>			
+			</plugin>
 		</plugins>
 		<pluginManagement>
 			<plugins>
@@ -108,9 +108,14 @@
 					</configuration>
 				</plugin>
 			</plugins>
+
+
 		</pluginManagement>
+
+
 	</build>
 
+	
 	<scm>
 		<connection>scm:git:git@github.com:st-js/bridges-examples.git</connection>
 		<developerConnection>scm:git:git@github.com:st-js/bridges-examples.git</developerConnection>

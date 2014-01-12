@@ -10,7 +10,6 @@ import org.stjs.bridge.underscorejs.TemplateOptions;
 import org.stjs.javascript.Array;
 import org.stjs.javascript.JSObjectAdapter;
 import org.stjs.javascript.Map;
-import org.stjs.javascript.annotation.Template;
 import org.stjs.javascript.dom.Input;
 import org.stjs.javascript.functions.Callback3;
 import org.stjs.javascript.functions.Function2;
@@ -111,7 +110,6 @@ public class AppView extends View<TodoModel> {
 		final boolean done = this.allCheckbox.checked;
 		Todo.Todos.each(new Callback3<TodoModel, Integer, Array<TodoModel>>() {
 			@Override
-			@Template("invoke")
 			public void $invoke(TodoModel todo, Integer index, Array<TodoModel> list) {
 				todo.save($map("done", done));
 			}
