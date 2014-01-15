@@ -18,7 +18,7 @@
 		<dependency>
 			<groupId>org.st-js.bridge</groupId>
 			<artifactId>jqueryui</artifactId>
-			<version>1.10.3.bv2-SNAPSHOT</version>
+			<version>1.10.3.bv2</version>
 		</dependency>
 		
 
